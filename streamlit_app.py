@@ -10,7 +10,7 @@ import pickle
 import streamlit as st
 
 
-model = pickle.load(open('C:/Users/SHOPINVERSE/Documents/GitHub/DiabetesPredictin/RandomForest887.pkl', 'rb'))
+model = pickle.load(open('C:/Users/SHOPINVERSE/Documents/GitHub/DiabetesPredictin/CatBoost.pkl', 'rb'))
 
 
 st.title('Diabetes Prediction System')
