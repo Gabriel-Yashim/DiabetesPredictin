@@ -10,12 +10,12 @@ import pickle
 import streamlit as st
 
 
-model = pickle.load(open('CatBoost.pkl', 'rb'))
+model = pickle.load(open('XGBoost_model.pkl', 'rb'))
 
 
 st.title('Diabetes Prediction System')
 html_temp = """
-    <h3 style="color:white;text-align:center;">By Gabriel Yashim</h3>
+    <h3 style="color:white;text-align:center;"></h3>
     <div style="background-color:rgb(117, 3, 3);padding:10px;margin-bottom:3rem">
         <p style="text-align:justify;">
             Welcome to this simple Diabetes Prediction System. The system can tell if a person has diabetes or not based on the following features: Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, Diabetes Pedigree Function,	and Age <br> 
@@ -45,7 +45,8 @@ output = ''
 
 
 if st.button('Submit'):
-    diabetes_pred = model.predict([[prg,glu,bp,skin,ins,bmi,dpf,age]])
+    input_data = np.array([[prg,glu,bp,skin,ins,bmi,dpf,age]], dtype=np.float32)
+    diabetes_pred = model.predict(input_data)
     
     if diabetes_pred[0] == 1:
         output = 'Diabetic'
